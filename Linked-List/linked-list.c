@@ -74,10 +74,65 @@ int recursive_counter(struct Node *pointer)
 	}
 }
 
+
+// Sum all nodes
+int sums(struct Node *pointer)
+{
+	int sum = 0;
+	while (pointer != NULL)
+	{
+		sum = sum + pointer->data;
+		pointer = pointer->next;
+	}
+	return sum;
+}
+
+
+// Recursive Sums
+int recursive_sums(struct Node *pointer)
+{
+	if (pointer == NULL)
+		return (0);
+
+	return (recursive_sums(pointer->next) + pointer->data);
+}
+
+// Find Max
+int get_max(struct Node *pointer)
+{
+	int max = -32768;
+	while (pointer) {
+		if (pointer->data > max)
+			max = pointer->data;
+		pointer = pointer->next;
+	}
+	return max;
+}
+
+
+// Recursive max
+int recursive_max(struct Node *pointer)
+{
+	int max = -32768;
+
+	if (pointer == 0) {
+		return max;
+	} else {
+		max = recursive_max(pointer->next);
+		if (max < pointer->data) {
+			return pointer->data;
+		} else {
+			return max;
+		}
+	}
+
+	pointer = pointer->next;
+}
+
 int main()
 {
-	int len;
-	int a[6] = {14, 15, 16, 17, 18, 19};
+	int len, sum, max;
+	int a[6] = {14, 15, 26, 17, 18, 19};
 
 	// Create Linked List
 	create(a, 6);
@@ -93,8 +148,24 @@ int main()
 	//printf("%d\n", len);
 
 	// Recursive Counter 
-	len = recursive_counter(first);
-	printf("%d\n", len);
+	//len = recursive_counter(first);
+	//printf("%d\n", len);
+
+	// Sum of all elements if intgers
+	//sum = sums(first);
+	//printf("%d\n", sum);
+
+	// Recursive Sums
+	//sum = recursive_sums(first);
+	//printf("%d\n", sum);
+
+	// Find Max if ingers
+	//max = get_max(first);
+	//printf("%d\n", max);
+	
+	// Find Max if ingers
+        max = recursive_max(first);
+        printf("%d\n", max);
 
 	return(0);
 }
