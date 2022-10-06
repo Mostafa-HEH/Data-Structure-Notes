@@ -64,3 +64,25 @@ while (pointer != 0)
     pointer = pointer->next;
 }
 ```
+* We can display nodes by Recusive display as the example
+```
+void display(struct Node *pointer)
+{
+	if (pointer != 0)
+	{
+		printf("%d", pointer->data);
+		display(pointer->next);
+	}
+}
+```
+This will print element in normal order, *But* if we call function before print it will prit as order as function calls on the stack recursonly, it will be reversed order as the example
+```
+void display(struct Node *pointer)
+{
+        if (pointer != 0)
+        {
+                display(pointer->next);
+		printf("%d", pointer->data);
+        }
+}
+```
