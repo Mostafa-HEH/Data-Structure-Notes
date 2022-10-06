@@ -86,3 +86,28 @@ void display(struct Node *pointer)
         }
 }
 ```
+
+### Count nodes in linked list:
+it's good to loop in linked list and count nodes `WHILE` Node `!=` `NULL` or `0`
+```
+counter = 0;
+while (pointer != null)
+{
+	counter++;
+	pointer = pointer->next;
+}
+printf("%d", counter);
+```
+So on Recursive count function
+```
+int counter(struct Node *pointer)
+{
+        if (pointer == 0) {
+                return (0);
+        } else {
+                return (counter(pointer->next) + 1);
+        }
+}
+```
+why  `return (counter(pointer->next) + 1);` not  `return (1 + counter(pointer->next));` ?
+the addion sould be done after function return and if before it will be 1 + null

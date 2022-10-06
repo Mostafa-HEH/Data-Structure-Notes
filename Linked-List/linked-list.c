@@ -52,18 +52,49 @@ void recursive_display(struct Node *p)
 	}
 }
 
+// Nodes Counter
+int counter(struct Node *pointer)
+{
+	int count = 0;
+	while (pointer != NULL)
+	{
+		count++;
+		pointer = pointer->next;
+	}
+	return (count);
+}
+
+// Recursive Counter
+int recursive_counter(struct Node *pointer)
+{
+	if (pointer == 0) {
+		return (0);
+	} else {
+		return (recursive_counter(pointer->next) + 1);
+	}
+}
+
 int main()
 {
+	int len;
 	int a[6] = {14, 15, 16, 17, 18, 19};
 
 	// Create Linked List
 	create(a, 6);
 
 	// Display data
-	display(first);
+	//display(first);
 
 	// Recursive Display
-	recursive_display(first);
+	//recursive_display(first);
+
+	// Count The Linked List
+	//len = counter(first);
+	//printf("%d\n", len);
+
+	// Recursive Counter 
+	len = recursive_counter(first);
+	printf("%d\n", len);
 
 	return(0);
 }
