@@ -140,3 +140,14 @@ The common senarios for deleting (delete the firt node, delete a node at given p
 
 ### Delete duplcated elements
 can delete the second duplcate element by compare the next elemnts and if need use sort function
+
+### Reversing a linked list
+we can reverse a linked list in two ways (reversing elemnts, reversing links).
+> First -> Reversing elements by changes the first Node data to contain last Node data and last node containe first node data and so on.
+and to Tod this:
+>> create an array and copy elements to them, then copy it again to Nodes list. So it's not an effecient way because it needs extra space for the array
+> Second on -> reversing links by make the next link to the previous.
+**It's recommended the second way with linked list**
+>> **Revesring using sliding** : by three pointers(follower, previous, pointer) with this same order. so pointer is current ellement and previous is the previous element to current element and at last follower is the previous for previous.
+so we need pointer and previous to change lead from previous -> pointer into previous -> follower.
+>> **Reversing by recusring** call function it selfe with current and previous function.

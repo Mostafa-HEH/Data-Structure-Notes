@@ -329,6 +329,64 @@ void remove_duplcates(struct Node *pointer)
 	}
 }
 
+// Reverse by element
+void reverse_element(struct Node *pointer)
+{
+	int *arr ,i = 0, counter = 0;
+	
+	while (pointer != NULL) {
+		counter++;
+		pointer = pointer->next;
+	}
+
+	pointer = first;
+
+	arr = (int *)malloc(sizeof(int) * counter);
+
+	while (pointer != NULL) {
+		arr[i] = pointer->data;
+		pointer = pointer->next;
+		i++;
+	}
+
+	pointer = first;
+	i--;
+
+	while (pointer != NULL) {
+		pointer->data = arr[i];
+		pointer = pointer->next;
+		i--;
+	}
+}
+
+// Reverse Linked List by linking
+void reverse(struct Node *pointer)
+{
+	struct Node *follower = NULL, *previous = NULL;
+
+	while (pointer)
+	{
+		follower = previous;
+		previous = pointer;
+		pointer = pointer->next;
+		previous->next = follower;
+	}
+
+	first = previous;
+}
+
+// Recusrion Reverse in linked list
+void recursion_reverse(struct Node *prev, struct Node *pointer)
+{
+	if (pointer)
+	{
+		recursion_reverse(pointer, pointer->next);
+		pointer->next = prev;
+	} else {
+		first = prev;
+	}
+}
+
 
 int main()
 {
@@ -400,10 +458,10 @@ int main()
 	//display(first);
 
 	// Insert at last
-	insert(6);
+	insert(5);
         insert(6);
-        insert(23);
-	insert(23);
+        insert(7);
+	insert(8);
         insert(50);
         //display(first);
 	
@@ -434,11 +492,29 @@ int main()
 	//printf("%d\n", is_sorted(first));
 	
 	// Remove duplcate from sorted linked list
-	display(first);
-	printf("--------------------------\n");
-	remove_duplcates(first);
-	printf("--------------------------\n");
-	display(first);
+	//display(first);
+	//printf("--------------------------\n");
+	//remove_duplcates(first);
+	//printf("--------------------------\n");
+	//display(first);
+
+	// Reverse Linked list by element
+	//display(first);
+	//printf("--------------------------\n");
+	//reverse_element(first);
+	//display(first);
+	
+	// Reverse Linked list by links
+        //display(first);
+        //printf("--------------------------\n");
+        //reverse(first);
+        //display(first);
+	
+        // Reverse Linked list with recursion
+        display(first);
+        printf("--------------------------\n");
+        recursion_reverse(NULL, first);
+        display(first);
 
 	return(0);
 }
