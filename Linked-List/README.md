@@ -129,3 +129,7 @@ the addion sould be done after function return and if before it will be 1 + null
 
 ### Creating Linked List using insert
 we can create a linked list with iserting function too but we should be shure first we added the 0 index Node and add valied index
+
+### Creating a Linked List by inserting at last Node
+* Alway last Node have next of `NULL` so we can reach last by create new node and make last Node next ref to the new one
+* Also create element saves last node will be good and help.

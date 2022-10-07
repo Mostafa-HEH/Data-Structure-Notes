@@ -5,7 +5,7 @@
 struct Node {
 	int data;
 	struct Node *next;
-}*first = NULL;
+}*first = NULL, *last = NULL;
 
 // Create Nodes
 void create(int a[], int n)
@@ -224,6 +224,49 @@ void insert_create(int idx, int el, struct Node *pointer)
 }
 
 
+// Creating a Linked List  by inserting at last
+void insert(int el)
+{
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));
+	new->data = el;
+	new->next = NULL;
+
+	if (first == NULL) {
+		first = new;
+		last = new;
+	}
+
+	last->next = new;
+	last = new;
+}
+
+void insert_sorted(struct Node *pointer, int el)
+{
+	struct Node *prev = NULL;
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));
+
+	new->data = el;
+	new->next = NULL;
+
+	if (first == NULL){
+		first = new;
+	} else {
+		while (pointer && pointer->data < el) {
+			prev = pointer;
+			pointer = pointer->next;
+		}
+	
+		if (pointer == first) {
+			new->next = first;
+			first = new;
+		} else {
+			new->next = prev->next;
+			prev->next = new;
+		}
+	}
+}
+
+
 int main()
 {
 	int len, sum, max;
@@ -285,13 +328,33 @@ int main()
         //display(first);
 	
 	// Create by inserting
-	insert_create(0, 20, first);
-	insert_create(1, 21, first);
-	insert_create(2, 22, first);
-	insert_create(1, 23, first);
-	insert_create(3, 24, first);
-	insert_create(0, 25, first);
-	display(first);
+	//insert_create(0, 20, first);
+	//insert_create(1, 21, first);
+	//insert_create(2, 22, first);
+	//insert_create(1, 23, first);
+	//insert_create(3, 24, first);
+	//insert_create(0, 25, first);
+	//display(first);
+
+	// Insert at last
+	//insert(5);
+        //insert(6);
+        //insert(7);
+	//insert(555);
+        //insert(8);
+        //insert(9);
+        //insert(10);
+        //display(first);
+	
+	// Insert at last
+        insert_sorted(first, 5);
+        insert_sorted(first, 10);
+        insert_sorted(first, 7);
+        insert_sorted(first, 555);
+        insert_sorted(first, 6);
+        insert_sorted(first, 4);
+        insert_sorted(first, 8);
+        display(first);
 
 	return(0);
 }
