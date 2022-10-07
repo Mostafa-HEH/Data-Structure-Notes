@@ -295,6 +295,21 @@ void delete_at(int p)
 
 }
 
+// Check if the linked list is sorted
+int is_sorted(struct Node *pointer)
+{
+	int x = -32768;
+
+	while (pointer) {
+		if (pointer->data < x)
+                	return 0;
+
+		x = pointer->data;
+                pointer = pointer->next;
+	}
+	return 1;
+}
+
 
 int main()
 {
@@ -366,23 +381,21 @@ int main()
 	//display(first);
 
 	// Insert at last
-	//insert(5);
-        //insert(6);
-        //insert(7);
-	//insert(555);
-        //insert(8);
-        //insert(9);
-        //insert(10);
+	insert(5);
+        insert(6);
+        insert(23);
+	insert(20);
+        insert(22);
         //display(first);
 	
 	// Insert at last
-        insert_sorted(first, 5);
-        insert_sorted(first, 10);
-        insert_sorted(first, 7);
-        insert_sorted(first, 555);
-        insert_sorted(first, 6);
-        insert_sorted(first, 4);
-        insert_sorted(first, 8);
+        //insert_sorted(first, 5);
+        //insert_sorted(first, 10);
+        //insert_sorted(first, 7);
+        //insert_sorted(first, 555);
+        //insert_sorted(first, 6);
+        //insert_sorted(first, 4);
+        //insert_sorted(first, 8);
         //display(first);
 	
 	// Deleting first node
@@ -393,10 +406,13 @@ int main()
 	//display(first);
 	
 	// Delete in spacific position
-        display(first);
-        printf("--------------------------\n");
-        delete_at(4);
-	display(first);
+        //display(first);
+        //printf("--------------------------\n");
+        //delete_at(4);
+	//display(first);
+	
+	// Is it the linked list sorted
+	printf("%d\n", is_sorted(first));
 
 	return(0);
 }
