@@ -201,6 +201,28 @@ void insert_after(struct Node *pointer, int el, int position)
 	}
 }
 
+// Create Linked List by inserting
+void insert_create(int idx, int el, struct Node *pointer)
+{
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));
+	new->data = el;
+
+	int i;
+	for (i = 0; i < idx - 1; i++) {
+		pointer = pointer->next;
+	}
+
+	if (idx == 0) {
+		new->next = pointer;
+		first = new;
+	} 
+	
+	if (idx > 0) {
+		new->next = pointer->next;
+		pointer->next = new;
+	}
+}
+
 
 int main()
 {
@@ -208,7 +230,7 @@ int main()
 	int a[6] = {14, 15, 16, 17, 18, 19};
 
 	// Create Linked List
-	create(a, 6);
+	//create(a, 6);
 
 	// Display data
 	//display(first);
@@ -257,10 +279,19 @@ int main()
 	//display(first);
 	
         // Insert after certen node
-        display(first);
-        insert_after(first, 5, 3);
-        printf("---------------------------\n");
-        display(first);
+        //display(first);
+        //insert_after(first, 5, 3);
+        //printf("---------------------------\n");
+        //display(first);
+	
+	// Create by inserting
+	insert_create(0, 20, first);
+	insert_create(1, 21, first);
+	insert_create(2, 22, first);
+	insert_create(1, 23, first);
+	insert_create(3, 24, first);
+	insert_create(0, 25, first);
+	display(first);
 
 	return(0);
 }

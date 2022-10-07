@@ -126,3 +126,6 @@ the addion sould be done after function return and if before it will be 1 + null
 * linked list are sorted as 1,2,3...etc index so i can insert element in any positions before first, after third , at last ...etc
 * So we have two strtatigies (before certen node, after certen node).
 
+
+### Creating Linked List using insert
+we can create a linked list with iserting function too but we should be shure first we added the 0 index Node and add valied index
