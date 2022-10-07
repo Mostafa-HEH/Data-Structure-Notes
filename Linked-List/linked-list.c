@@ -171,6 +171,36 @@ int search_with_improve(struct Node *pointer, int el)
         return 0;
 }
 
+// Iserting before first element
+void insert_before_first(struct Node *pointer, int el)
+{
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));
+
+	new->data = el;
+	new->next = pointer;
+	
+	first = new;	
+}
+
+
+// Inserting after certen node position
+void insert_after(struct Node *pointer, int el, int position)
+{
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));
+	new->data = el;
+
+	int counter = 0;
+	while (pointer != NULL){
+		if(counter == position){
+			new->next = pointer->next;
+			pointer->next = new;
+			break;
+		}
+		counter++;
+		pointer = pointer->next;
+	}
+}
+
 
 int main()
 {
@@ -200,7 +230,6 @@ int main()
 
 	// Recursive Sums
 	//sum = recursive_sums(first);
-	//B
 	//printf("%d\n", sum);
 
 	// Find Max if ingers
@@ -218,8 +247,20 @@ int main()
 	//printf("%d\n", recursive_is_found(first, 18));
 	
 	// Search with improve;
-	printf("is found: %d\n",search_with_improve(first, 17));
-	display(first);
+	//printf("is found: %d\n",search_with_improve(first, 17));
+	//display(first);
+	
+	// Insert before first node
+	//display(first);
+	//insert_before_first(first, 5);
+	//printf("---------------------------\n");
+	//display(first);
+	
+        // Insert after certen node
+        display(first);
+        insert_after(first, 5, 3);
+        printf("---------------------------\n");
+        display(first);
 
 	return(0);
 }
