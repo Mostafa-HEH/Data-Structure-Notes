@@ -133,3 +133,7 @@ we can create a linked list with iserting function too but we should be shure fi
 ### Creating a Linked List by inserting at last Node
 * Alway last Node have next of `NULL` so we can reach last by create new node and make last Node next ref to the new one
 * Also create element saves last node will be good and help.
+
+### Deleting from linked list
+The common senarios for deleting (delete the firt node, delete a node at given position)* For first case -Delete first Node- :
+> will change the pointer first to the next node, by this the first node cannot be reached any more but it will still located at the memory, so be sure you unlocate the Node.

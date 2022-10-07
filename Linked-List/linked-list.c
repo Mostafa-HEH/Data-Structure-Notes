@@ -266,6 +266,35 @@ void insert_sorted(struct Node *pointer, int el)
 	}
 }
 
+// Detete First Node
+void delete_first()
+{
+	int arc;
+	struct Node *pointer = first;
+	first  = first->next;
+	arc = first->data;
+	free(pointer);
+}
+
+// Delete at spacific position
+void delete_at(int p)
+{
+	struct Node *prev, *pointer = first;
+	int counter = 1, arc;
+
+	while (p != counter) {
+		prev = pointer;
+		pointer = pointer->next;
+		counter++;
+	}
+
+	prev->next = pointer->next;
+	arc = pointer->data;
+	free(pointer);
+
+
+}
+
 
 int main()
 {
@@ -354,7 +383,20 @@ int main()
         insert_sorted(first, 6);
         insert_sorted(first, 4);
         insert_sorted(first, 8);
+        //display(first);
+	
+	// Deleting first node
+	//display(first);
+	//printf("--------------------------\n");
+	//delete_first();
+	//delete_first();
+	//display(first);
+	
+	// Delete in spacific position
         display(first);
+        printf("--------------------------\n");
+        delete_at(4);
+	display(first);
 
 	return(0);
 }
