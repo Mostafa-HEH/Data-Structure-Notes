@@ -129,10 +129,53 @@ int recursive_max(struct Node *pointer)
 	pointer = pointer->next;
 }
 
+
+// Search element
+int is_found(struct Node *pointer, int el)
+{
+	while (pointer != NULL){
+		if (pointer->data == el)
+			return 1;
+		pointer = pointer->next;
+	}
+	return 0;
+}
+
+// Recursive search element
+int recursive_is_found(struct Node *pointer, int el)
+{
+	if(pointer == NULL){
+		return 0;
+	} else if(pointer->data == el){
+		return 1;
+	}
+	recursive_is_found(pointer->next, el);
+}
+
+// Improve search
+int search_with_improve(struct Node *pointer, int el)
+{
+	struct Node *prev = pointer;
+
+        while (pointer != NULL){
+                if (pointer->data == el){
+			prev->next = pointer->next;
+			pointer->next = first;
+			first = pointer;
+                        return 1;
+		}
+		prev = pointer;
+                pointer = pointer->next;
+        }
+
+        return 0;
+}
+
+
 int main()
 {
 	int len, sum, max;
-	int a[6] = {14, 15, 26, 17, 18, 19};
+	int a[6] = {14, 15, 16, 17, 18, 19};
 
 	// Create Linked List
 	create(a, 6);
@@ -157,6 +200,7 @@ int main()
 
 	// Recursive Sums
 	//sum = recursive_sums(first);
+	//B
 	//printf("%d\n", sum);
 
 	// Find Max if ingers
@@ -164,8 +208,18 @@ int main()
 	//printf("%d\n", max);
 	
 	// Find Max if ingers
-        max = recursive_max(first);
-        printf("%d\n", max);
+        //max = recursive_max(first);
+        //printf("%d\n", max);
+	
+	// Search element
+	//printf("%d\n", is_found(first, 27));
+	
+	// Recursive search
+	//printf("%d\n", recursive_is_found(first, 18));
+	
+	// Search with improve;
+	printf("is found: %d\n",search_with_improve(first, 17));
+	display(first);
 
 	return(0);
 }

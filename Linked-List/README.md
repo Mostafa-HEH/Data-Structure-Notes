@@ -111,3 +111,13 @@ int counter(struct Node *pointer)
 ```
 why  `return (counter(pointer->next) + 1);` not  `return (1 + counter(pointer->next));` ?
 the addion sould be done after function return and if before it will be 1 + null
+
+
+### Search in Linked List
+* There are two typs of search (linear search and binary search), and with linked list we can only use linear search beacause we cannot reach the middle of the nodes.
+* Search is looping to reach the last `NULL` value if the element is found `Return ture` else `Return false`.
+* There are two ways to improve search in the linked list (Transposition - move to the Head).
+	1 - Move to the Head : by moveing the search element to the begin of the list and to do this process:
+		* we need current Node and previous Node
+		* to get previous node we need to create a pointer to follow the current pointer.
+
