@@ -311,6 +311,25 @@ int is_sorted(struct Node *pointer)
 }
 
 
+// Remove duplcates from sorted list
+void remove_duplcates(struct Node *pointer)
+{
+	struct Node *nxt = pointer->next;
+
+	while (nxt != NULL){
+		if (pointer->data != nxt->data)
+		{
+                        pointer = nxt;
+                        nxt = nxt->next;
+		} else {
+                        pointer->next = nxt->next;
+                        free(nxt);
+                        nxt = pointer->next;
+		}
+	}
+}
+
+
 int main()
 {
 	int len, sum, max;
@@ -381,11 +400,11 @@ int main()
 	//display(first);
 
 	// Insert at last
-	insert(5);
+	insert(6);
         insert(6);
         insert(23);
-	insert(20);
-        insert(22);
+	insert(23);
+        insert(50);
         //display(first);
 	
 	// Insert at last
@@ -412,7 +431,14 @@ int main()
 	//display(first);
 	
 	// Is it the linked list sorted
-	printf("%d\n", is_sorted(first));
+	//printf("%d\n", is_sorted(first));
+	
+	// Remove duplcate from sorted linked list
+	display(first);
+	printf("--------------------------\n");
+	remove_duplcates(first);
+	printf("--------------------------\n");
+	display(first);
 
 	return(0);
 }
