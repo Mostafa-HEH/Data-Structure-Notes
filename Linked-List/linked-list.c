@@ -398,6 +398,27 @@ void concating(struct Node *fpointer, struct Node *spointer)
 }
 
 
+// chech if linear or loop
+int is_loop(struct Node *pointer)
+{
+	struct Node *p = pointer, *q = pointer;
+	
+	do {
+		p = p->next;
+		q = q->next;
+		
+		if (q)
+			q->next;
+	} while (p && q);
+
+	if (p == q) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+
 int main()
 {
 	int len, sum, max;

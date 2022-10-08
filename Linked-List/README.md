@@ -154,3 +154,8 @@ so we need pointer and previous to change lead from previous -> pointer into pre
 
 ### Concating Linked Lists
 Concating simply means to appened one list to other, for example we have two lists so we need to reach the last of the firt one and make it points to the first in the second list.
+
+### Check if Linked list is linear or looping
+* Loop linked list means that the last node points to a Node on the current list
+* Linear means that the last node is `NULL` .
+> To check that we will use two pointers one moves node br node and other move two bar two nodesand if the two is equle then there is a loop and if any of them is `NULL` then it's linear one.
