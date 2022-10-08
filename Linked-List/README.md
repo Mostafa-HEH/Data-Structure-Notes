@@ -151,3 +151,6 @@ and to Tod this:
 >> **Revesring using sliding** : by three pointers(follower, previous, pointer) with this same order. so pointer is current ellement and previous is the previous element to current element and at last follower is the previous for previous.
 so we need pointer and previous to change lead from previous -> pointer into previous -> follower.
 >> **Reversing by recusring** call function it selfe with current and previous function.
+
+### Concating Linked Lists
+Concating simply means to appened one list to other, for example we have two lists so we need to reach the last of the firt one and make it points to the first in the second list.

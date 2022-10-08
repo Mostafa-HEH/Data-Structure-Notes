@@ -5,7 +5,7 @@
 struct Node {
 	int data;
 	struct Node *next;
-}*first = NULL, *last = NULL;
+}*first = NULL,*second = NULL , *last = NULL;
 
 // Create Nodes
 void create(int a[], int n)
@@ -388,6 +388,16 @@ void recursion_reverse(struct Node *prev, struct Node *pointer)
 }
 
 
+// Concating two linked list
+void concating(struct Node *fpointer, struct Node *spointer)
+{
+	while (fpointer->next != NULL)
+		fpointer = fpointer->next;
+	fpointer->next = spointer;
+	spointer = NULL;
+}
+
+
 int main()
 {
 	int len, sum, max;
@@ -458,11 +468,11 @@ int main()
 	//display(first);
 
 	// Insert at last
-	insert(5);
-        insert(6);
-        insert(7);
-	insert(8);
-        insert(50);
+	//insert(5);
+        //insert(6);
+        //insert(7);
+	//insert(8);
+        //insert(50);
         //display(first);
 	
 	// Insert at last
@@ -511,10 +521,29 @@ int main()
         //display(first);
 	
         // Reverse Linked list with recursion
-        display(first);
-        printf("--------------------------\n");
-        recursion_reverse(NULL, first);
-        display(first);
+        //display(first);
+        //printf("--------------------------\n");
+        //recursion_reverse(NULL, first);
+        //display(first);
+	
+	// Conating two lists
+	printf("First---------------\n");
+	insert_sorted(first, 5);
+	insert_sorted(first, 6);
+	insert_sorted(first, 7);
+	insert_sorted(first, 8);
+	insert_sorted(first, 9);
+	display(first);
+	printf("Second---------------\n");
+	second = (struct Node *)malloc(sizeof(struct Node));
+	second->data = 15;
+	second->next = NULL;
+	display(second);
+	printf("First with Second---------------\n");
+	concating(first, second);
+	display(first);
+	printf("---------------\n");
+	display(second);
 
 	return(0);
 }
